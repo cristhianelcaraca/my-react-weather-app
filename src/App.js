@@ -1,14 +1,14 @@
+import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Weather from "./Weather";
 
-console.log(Weather);
-
 function App() {
+  console.log("App renderizou");
   return (
     <div className="App">
       <div className="container">
-        <Weather />
+        <Weather defaultCity="New York" />
 
         <footer>
           This project was coded by{" "}
