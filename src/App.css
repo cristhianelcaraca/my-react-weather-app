@@ -1,10 +1,16 @@
 .App {
-  max-width: 600px;
-  margin: 0 auto;
+  background: linear-gradient(135deg, #f5f7fa, #e8f0fe);
+  min-height: 100vh;
+  padding-top: 40px;
+  box-sizing: border-box;
+}
+
+.App .container {
+  max-width: 700px;
 }
 
 .App footer {
   text-align: center;
-  font-size: 11px;
+  font-size: 16px;
   margin: 10px 0;
 }

@@ -2,20 +2,29 @@ import React from "react";
 import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherForecastDay(props) {
+  function celsiusToFahrenheit(celsius) {
+    return (celsius * 9) / 5 + 32;
+  }
+
   function maxTemperature() {
-    let temperature = Math.round(props.data.temperature.maximum);
-    return `${temperature}°`;
+    let temperature =
+      props.unit === "celsius"
+        ? props.data.temperature.maximum
+        : celsiusToFahrenheit(props.data.temperature.maximum);
+    return `${Math.round(temperature)}°`;
   }
 
   function minTemperature() {
-    let temperature = Math.round(props.data.temperature.minimum);
-    return `${temperature}°`;
+    let temperature =
+      props.unit === "celsius"
+        ? props.data.temperature.minimum
+        : celsiusToFahrenheit(props.data.temperature.minimum);
+    return `${Math.round(temperature)}°`;
   }
 
   function formatDay(timestamp) {
     let date = new Date(timestamp * 1000);
     let day = date.getDay();
-
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     return days[day];
   }

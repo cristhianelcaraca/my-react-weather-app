@@ -6,3 +6,104 @@
   opacity: 0.6;
   margin-left: 5px;
 }
+
+.WeatherInfo h1 {
+  font-size: 32px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0;
+}
+
+.WeatherTemperature {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 64px;
+  line-height: 1;
+}
+
+.WeatherTemperature .temperature {
+  font-size: 64px;
+}
+
+.WeatherTemperature .unit {
+  font-size: 16px;
+  margin-left: 4px;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  border-radius: 8px;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.WeatherForecast {
+  margin-top: 20px;
+}
+
+.weather-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App {
+  background: linear-gradient(135deg, #f5f7fa, #e8f0fe);
+  min-height: 100vh;
+  padding-top: 40px;
+  box-sizing: border-box;
+}
+
+.Weather {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.WeatherTemperature .unit {
+  font-size: 16px;
+  margin-left: 4px;
+  white-space: nowrap;
+  position: relative;
+  top: -10px;
+}
+
+.WeatherTemperature a:hover {
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+@media (max-width: 576px) {
+  .App {
+    padding-top: 20px;
+  }
+
+  .Weather {
+    padding: 15px;
+  }
+  .WeatherTemperature {
+    font-size: 52px;
+  }
+
+  .WeatherTemperature {
+    font-size: 48px;
+  }
+
+  .WeatherTemperature .temperature {
+    font-size: 48px;
+  }
+
+  .WeatherTemperature .unit {
+    font-size: 12px;
+    margin-left: 3px;
+  }
+
+  .WeatherTemperature .unit {
+    font-size: 12px;
+    margin-left: 3px;
+    top: -6px;
+  }
+}
