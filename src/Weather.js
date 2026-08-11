@@ -20,7 +20,6 @@ export default function Weather(props) {
   }
 
   function handleResponse(response) {
-    // Verifica se a API encontrou os dados necessários
     if (!response.data.condition) {
       setLoading(false);
       setError(true);
