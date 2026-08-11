@@ -60,8 +60,14 @@ export default function Weather(props) {
   }
 
   useEffect(() => {
-    search();
-  }, []);
+    setLoading(true);
+
+    const apiKey = "fad20348e4cdad62eo6a43actbfe6170";
+
+    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(handleResponse).catch(handleError);
+  }, [props.defaultCity]);
 
   function handleSubmit(event) {
     event.preventDefault();
