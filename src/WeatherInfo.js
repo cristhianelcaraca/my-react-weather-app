@@ -11,13 +11,13 @@ export default function WeatherInfo(props) {
         <li>
           <FormattedDate date={props.data.date} />
         </li>
-        <li className="text-capitalize">{props.data.condition.description}</li>
+        <li className="text-capitalize">{props.data.condition}</li>
       </ul>
       <div className="row">
         <div className="col-6">
           <div className="d-flex align-items-center">
             <div className="float-left">
-              <WeatherIcon code={props.data.condition.icon} />
+              <WeatherIcon code={props.data.icon} size={52} />
             </div>
 
             <div className="float-left">
