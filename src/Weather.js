@@ -19,8 +19,35 @@ export default function Weather(props) {
     }
   }
 
+  // remove acentos e deixa tudo minúsculo, para comparar textos de forma mais justa
+  function normalizeText(text) {
+    return text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+  }
+
+  // verifica se a cidade digitada tem relação com a cidade que a API retornou
+  function citiesMatch(typedCity, returnedCity) {
+    const typed = normalizeText(typedCity);
+    const returned = normalizeText(returnedCity);
+    return returned.includes(typed) || typed.includes(returned);
+  }
+
   function handleResponse(response) {
-    if (!response.data.condition) {
+    const data = response.data;
+    console.log("Cidade digitada:", city);
+    console.log("Resposta da API:", data);
+
+    const isValid =
+      data &&
+      data.city &&
+      data.temperature &&
+      data.condition &&
+      citiesMatch(city, data.city);
+
+    if (!isValid) {
       setLoading(false);
       setError(true);
       setWeatherData({ ready: false });
@@ -29,13 +56,13 @@ export default function Weather(props) {
 
     setWeatherData({
       ready: true,
-      coordinates: response.data.coordinates,
-      temperature: response.data.temperature,
-      wind: response.data.wind,
-      city: response.data.city,
-      date: new Date(response.data.time * 1000),
-      icon: response.data.condition.icon,
-      condition: response.data.condition.description,
+      coordinates: data.coordinates,
+      temperature: data.temperature,
+      wind: data.wind,
+      city: data.city,
+      date: new Date(data.time * 1000),
+      icon: data.condition.icon,
+      condition: data.condition.description,
     });
 
     setLoading(false);
@@ -67,6 +94,7 @@ export default function Weather(props) {
     const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(handleResponse).catch(handleError);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.defaultCity]);
 
   function handleSubmit(event) {
